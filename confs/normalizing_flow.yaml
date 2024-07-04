@@ -1,0 +1,19 @@
+model:
+  name: normalizing_flow
+  num_layers: 15
+
+trainer:
+  lr: 0.001
+  epochs: 20
+  batch_size: 128
+  T_max: 20
+
+data:
+  number_of_data_points: 250000
+  conditioned: False
+
+
+
+
+
+
