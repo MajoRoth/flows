@@ -15,7 +15,8 @@ import matplotlib.pyplot as plt
 
 from tqdm import tqdm
 
-colors = ['blue', 'black', 'red', 'yellow', 'green']
+colors = ['black', 'blue', 'green', 'red', 'yellow']
+
 
 def sample(model, cfg):
     ckpt_path = cfg.model.dir / f"epoch_19.pt"
@@ -38,7 +39,7 @@ def sample(model, cfg):
 def q2(model, cfg):
     ckpt_path = cfg.model.dir / f"epoch_19.pt"
     model.load_state_dict(torch.load(ckpt_path))
-    colors = ['blue', 'black', 'red', 'yellow', 'green']
+    colors = ['black', 'blue', 'green', 'red', 'yellow']
 
     pz = torch.distributions.MultivariateNormal(torch.zeros(2, dtype=torch.float64), torch.eye(2, dtype=torch.float64))
     samples = pz.sample((5,))
@@ -74,5 +75,5 @@ if __name__ == '__main__':
     if torch.cuda.is_available():
         model = model.cuda()
 
-    # sample(model, cfg)
-    q2(model, cfg)
+    sample(model, cfg)
+    # q2(model, cfg)
